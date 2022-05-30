@@ -4,24 +4,26 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
+import InputTodo from './InputTodo';
 import TodoList from './TodoList';
 
 class TodoContainer extends Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuidv4(),
         title: 'Setup development environment',
         completed: true,
       },
       {
-        id: 2,
+        id: uuidv4(),
         title: 'Develop website and content',
         completed: false,
       },
       {
-        id: 3,
+        id: uuidv4(),
         title: 'Deploy to live server',
         completed: true,
       },
@@ -52,10 +54,22 @@ class TodoContainer extends Component {
     });
   };
 
+  addToDoItem = (title) => {
+    const newToDo = {
+      id: uuidv4(),
+      title,
+      completed: false,
+    };
+    this.setState({
+      todos: [...this.state.todos, newToDo],
+    });
+  };
+
   render() {
     return (
       <>
         <Header />
+        <InputTodo addToDoProps={this.addToDoItem} />
         <TodoList
           todos={this.state.todos}
           handleChangeProps={this.handleChange}
