@@ -1,8 +1,10 @@
-/* eslint-disable react/jsx-key */
+/* eslint-disable arrow-body-style */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import Header from './Header';
 import TodoList from './TodoList';
 
 class TodoContainer extends Component {
@@ -26,9 +28,40 @@ class TodoContainer extends Component {
     ],
   };
 
+  handleChange = (id) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
+  };
+
+  delToDo = (id) => {
+    this.setState({
+      todos: [
+        ...this.state.todos.filter((todo) => {
+          return todo.id !== id;
+        }),
+      ],
+    });
+  };
+
   render() {
     return (
-      <TodoList todos={this.state.todos} />
+      <>
+        <Header />
+        <TodoList
+          todos={this.state.todos}
+          handleChangeProps={this.handleChange}
+          deleteToDoProps={this.delToDo}
+        />
+      </>
     );
   }
 }
