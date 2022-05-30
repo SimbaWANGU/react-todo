@@ -4,7 +4,14 @@ import React from 'react';
 const Header = () => {
   return (
     <header>
-      <h1>Todos</h1>
+      <h1
+        style={{
+          fontSize: '6rem',
+          fontWeight: '600',
+        }}
+      >
+        Todos
+      </h1>
     </header>
   );
 };
