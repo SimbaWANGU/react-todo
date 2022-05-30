@@ -1,0 +1,26 @@
+$itemColor : #eaeaea;
+$backGroundColor : #f1f3f4;
+$noneText : none;
+
+.item {
+  font-size: 1.2rem;
+  list-style-type: $noneText;
+  padding: 17px 0;
+  border-bottom: 1px solid $itemColor;
+}
+
+.checkbox {
+  margin-right: 15px;
+}
+
+.item button {
+  font-size: 13px;
+  background: $backGroundColor;
+  border: $noneText;
+  cursor: pointer;
+  float: right;
+  outline: $noneText;
+  border-radius: 10px;
+  height: 30px;
+  width: 50px;
+}
