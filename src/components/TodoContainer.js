@@ -15,7 +15,17 @@ class TodoContainer extends Component {
     todos: [],
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidMount() {
+    const lStorage = localStorage.getItem('todos');
+    const loadedTodos = JSON.parse(lStorage);
+    if (loadedTodos) {
+      this.setState({
+        todos: loadedTodos,
+      });
+    }
+  }
+
+  componentDidUpdate(prevState) {
     if (prevState.todos !== this.state.todos) {
       const lStorage = JSON.stringify(this.state.todos);
       localStorage.setItem('todos', lStorage);
