@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
 const TodoList = (props) => {
@@ -9,8 +9,7 @@ const TodoList = (props) => {
     deleteToDoProps,
     setUpdate,
   } = props;
-  // const todoTasks = todos;
-  // console.log(todoTasks);
+
   return (
     <ul>
       {todos.map((todo) => (
@@ -24,6 +23,19 @@ const TodoList = (props) => {
       ))}
     </ul>
   );
+};
+
+TodoList.propTypes = {
+  todos: PropTypes.instanceOf(Array).isRequired,
+  handleChangeProps: PropTypes.func,
+  deleteToDoProps: PropTypes.func,
+  setUpdate: PropTypes.func,
+};
+
+TodoList.defaultProps = {
+  handleChangeProps: () => null,
+  deleteToDoProps: () => null,
+  setUpdate: () => null,
 };
 
 export default TodoList;

@@ -1,6 +1,10 @@
 $bodyColor : #444;
 $background : #fff;
 $inputPlaceholder : #000;
+$itemColor : #eaeaea;
+$backGroundColor : #f1f3f4;
+$borderColor : #dfdfdf;
+$noneText : none;
 
 * {
   margin: 0;
@@ -36,4 +40,16 @@ body {
   width: 85%;
   padding: 0 5px 0 10px;
   border-radius: calc(0.5 * 100px);
+}
+
+.submitButton {
+  font-size: 13px;
+  background: $backGroundColor;
+  border: $noneText;
+  cursor: pointer;
+  float: right;
+  outline: $noneText;
+  border-radius: 10px;
+  height: 30px;
+  width: 50px;
 }

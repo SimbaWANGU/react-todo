@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { FaTrash } from 'react-icons/fa';
 import styles from './TodoItem.module.scss';
 
 function TodoItem(props) {
@@ -53,7 +54,7 @@ function TodoItem(props) {
           type="submit"
           onClick={() => deleteToDoProps(id)}
         >
-          Delete
+          <FaTrash />
         </button>
         <span style={completed ? completedStyle : null}>
           {title}
@@ -72,5 +73,18 @@ function TodoItem(props) {
     </li>
   );
 }
+
+TodoItem.propTypes = {
+  todo: PropTypes.instanceOf(Object).isRequired,
+  handleChangeProps: PropTypes.func,
+  deleteToDoProps: PropTypes.func,
+  setUpdate: PropTypes.func,
+};
+
+TodoItem.defaultProps = {
+  handleChangeProps: () => null,
+  deleteToDoProps: () => null,
+  setUpdate: () => null,
+};
 
 export default TodoItem;
