@@ -51,7 +51,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - [Microverse](https://github.com/microverseinc)
-- [Ibaslogic](https://github.com/ibaslogic)y
+- [Ibaslogic](https://github.com/ibaslogic)
 
 ## 📝 License
 
