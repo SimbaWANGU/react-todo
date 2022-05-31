@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prefer-stateless-function */
 import React, { useState } from 'react';
 import styles from './TodoItem.module.scss';
 
@@ -14,7 +12,14 @@ function TodoItem(props) {
     textDecoration: 'line-through',
   };
 
-  const { completed, id, title } = props.todo;
+  const {
+    todo,
+    handleChangeProps,
+    deleteToDoProps,
+    setUpdate,
+  } = props;
+
+  const { completed, id, title } = todo;
 
   const handleEditing = () => {
     setEditing(!editing);
@@ -42,11 +47,11 @@ function TodoItem(props) {
           className={styles.checkbox}
           type="checkbox"
           checked={completed}
-          onChange={() => props.handleChangeProps(id)}
+          onChange={() => handleChangeProps(id)}
         />
         <button
           type="submit"
-          onClick={() => props.deleteToDoProps(id)}
+          onClick={() => deleteToDoProps(id)}
         >
           Delete
         </button>
@@ -60,7 +65,7 @@ function TodoItem(props) {
         className={styles.textInput}
         value={title}
         onChange={(e) => {
-          props.setUpdate(e.target.value, id);
+          setUpdate(e.target.value, id);
         }}
         onKeyDown={handleUpdatedDone}
       />
