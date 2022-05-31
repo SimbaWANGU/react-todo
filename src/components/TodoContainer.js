@@ -12,24 +12,25 @@ import TodoList from './TodoList';
 
 class TodoContainer extends Component {
   state = {
-    todos: [
-      {
-        id: uuidv4(),
-        title: 'Setup development environment',
-        completed: true,
-      },
-      {
-        id: uuidv4(),
-        title: 'Develop website and content',
-        completed: false,
-      },
-      {
-        id: uuidv4(),
-        title: 'Deploy to live server',
-        completed: true,
-      },
-    ],
+    todos: [],
   };
+
+  componentDidMount() {
+    const lStorage = localStorage.getItem('todos');
+    const loadedTodos = JSON.parse(lStorage);
+    if (loadedTodos) {
+      this.setState({
+        todos: loadedTodos,
+      });
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.todos !== this.state.todos) {
+      const lStorage = JSON.stringify(this.state.todos);
+      localStorage.setItem('todos', lStorage);
+    }
+  }
 
   handleChange = (id) => {
     this.setState((prevState) => ({
