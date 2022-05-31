@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import TodoItem from './TodoItem';
 
@@ -10,6 +9,8 @@ const TodoList = (props) => {
     deleteToDoProps,
     setUpdate,
   } = props;
+  // const todoTasks = todos;
+  // console.log(todoTasks);
   return (
     <ul>
       {todos.map((todo) => (
