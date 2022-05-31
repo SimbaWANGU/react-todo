@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prefer-stateless-function */
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './TodoItem.module.scss';
 
 function TodoItem(props) {
+  const [editing, setEditing] = useState(false);
+
   const completedStyle = {
     fontStyle: 'italic',
     color: '#595959',
@@ -14,23 +16,54 @@ function TodoItem(props) {
 
   const { completed, id, title } = props.todo;
 
+  const handleEditing = () => {
+    setEditing(!editing);
+  };
+
+  const handleUpdatedDone = (e) => {
+    if (e.key === 'Enter') {
+      setEditing(!editing);
+    }
+  };
+
+  const viewMode = {};
+  const editMode = {};
+
+  if (editing) {
+    viewMode.display = 'none';
+  } else {
+    editMode.display = 'none';
+  }
+
   return (
     <li className={styles.item}>
+      <div onDoubleClick={handleEditing} style={viewMode}>
+        <input
+          className={styles.checkbox}
+          type="checkbox"
+          checked={completed}
+          onChange={() => props.handleChangeProps(id)}
+        />
+        <button
+          type="submit"
+          onClick={() => props.deleteToDoProps(id)}
+        >
+          Delete
+        </button>
+        <span style={completed ? completedStyle : null}>
+          {title}
+        </span>
+      </div>
       <input
-        className={styles.checkbox}
-        type="checkbox"
-        checked={completed}
-        onChange={() => props.handleChangeProps(id)}
+        type="text"
+        style={editMode}
+        className={styles.textInput}
+        value={title}
+        onChange={(e) => {
+          props.setUpdate(e.target.value, id);
+        }}
+        onKeyDown={handleUpdatedDone}
       />
-      <button
-        type="submit"
-        onClick={() => props.deleteToDoProps(id)}
-      >
-        Delete
-      </button>
-      <span style={completed ? completedStyle : null}>
-        {title}
-      </span>
     </li>
   );
 }

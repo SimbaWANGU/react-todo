@@ -1,5 +1,6 @@
 $itemColor : #eaeaea;
 $backGroundColor : #f1f3f4;
+$borderColor : #dfdfdf;
 $noneText : none;
 
 .item {
@@ -23,4 +24,10 @@ $noneText : none;
   border-radius: 10px;
   height: 30px;
   width: 50px;
+}
+
+.textInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid $borderColor;
 }

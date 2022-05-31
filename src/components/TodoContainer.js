@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable class-methods-use-this */
@@ -65,6 +66,17 @@ class TodoContainer extends Component {
     });
   };
 
+  setUpdate = (updatedTitle, id) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.title = updatedTitle;
+        }
+        return todo;
+      }),
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -75,6 +87,7 @@ class TodoContainer extends Component {
             todos={this.state.todos}
             handleChangeProps={this.handleChange}
             deleteToDoProps={this.delToDo}
+            setUpdate={this.setUpdate}
           />
         </div>
       </div>

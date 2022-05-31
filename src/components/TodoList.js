@@ -14,6 +14,7 @@ class TodoList extends Component {
             todo={todo}
             handleChangeProps={this.props.handleChangeProps}
             deleteToDoProps={this.props.deleteToDoProps}
+            setUpdate={this.props.setUpdate}
           />
         ))}
       </ul>
