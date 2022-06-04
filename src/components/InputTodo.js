@@ -6,6 +6,7 @@ const InputTodo = (props) => {
   const [textInput, setTextInput] = useState({
     title: '',
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { addToDoProps } = props;
 
@@ -23,12 +24,20 @@ const InputTodo = (props) => {
         title: '',
       });
     } else {
-      alert('Please write item');
+      setErrorMessage(' Add a task');
+      setTimeout(() => setErrorMessage(''), 2000);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
+      {errorMessage && (
+        <p className="error">
+          Error:
+          {errorMessage}
+          !
+        </p>
+      )}
       <input
         type="text"
         placeholder="Add Todo..."

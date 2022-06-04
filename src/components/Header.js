@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import './Header.scss';
 
 const Header = () => {
   const headerStyle = {
@@ -10,15 +11,7 @@ const Header = () => {
   return (
     <header style={headerStyle}>
       <h1
-        style={{
-          fontSize: '6rem',
-          fontWeight: '600',
-          marginBottom: '2rem',
-          lineHeight: '1em',
-          color: '#ececec',
-          textTransform: 'lowercase',
-          textAlign: 'center',
-        }}
+        className="title"
       >
         Todos
       </h1>
