@@ -42,6 +42,13 @@ body {
   border-radius: calc(0.5 * 100px);
 }
 
+.error {
+  color: red;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .submitButton {
   font-size: 13px;
   background: $backGroundColor;
