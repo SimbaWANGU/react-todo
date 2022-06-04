@@ -1,0 +1,62 @@
+$bodyColor : #444;
+$background : #fff;
+$inputPlaceholder : #000;
+$itemColor : #eaeaea;
+$backGroundColor : #f1f3f4;
+$borderColor : #dfdfdf;
+$noneText : none;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.4;
+  color: $bodyColor;
+  background: $background;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.inner {
+  width: 100%;
+  padding: 8rem 10px 4rem;
+}
+
+.input-text {
+  font-size: 1rem;
+  font-weight: 400;
+  width: 85%;
+  padding: 0 5px 0 10px;
+  border-radius: calc(0.5 * 100px);
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.submitButton {
+  font-size: 13px;
+  background: $backGroundColor;
+  border: $noneText;
+  cursor: pointer;
+  float: right;
+  outline: $noneText;
+  border-radius: 10px;
+  height: 30px;
+  width: 50px;
+}
